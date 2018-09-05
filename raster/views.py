@@ -423,6 +423,7 @@ class AlgebraView(RasterView):
         img = Image.new("RGBA", (WEB_MERCATOR_TILESIZE, WEB_MERCATOR_TILESIZE), (0, 0, 0, 0))
         return self.write_img_to_response(img, {})
 
+
 class LegendView(RasterView):
 
     def get(self, request, legend_id):
