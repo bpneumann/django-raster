@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 import json
 import math
 import os
-import uuid
 from operator import itemgetter
 
 import numpy
@@ -354,13 +353,12 @@ class RasterLayerBandMetadata(models.Model):
 
 
 def upload_tile_to(instance, filename):
-    return '{uuid}-tile-{rst}-{z}-{x}-{y}{form}'.format(
-        uuid=uuid.uuid4(),
+    return 'tiles/{rst}/{z}/{x}/{y}{ext}'.format(
         rst=instance.rasterlayer_id,
         z=instance.tilez,
         x=instance.tilex,
         y=instance.tiley,
-        form=os.path.splitext(filename)[-1],
+        ext=os.path.splitext(filename)[-1],
     )
 
 
